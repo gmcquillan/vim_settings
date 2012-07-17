@@ -3,18 +3,21 @@ set nocp
 filetype off
 
 " pathogen
-"let g:pathogen_disabled = [ 'pathogen' ]    " don't load self 
-"call pathogen#infect()                      " load everyhting else
-"call pathogen#helptags()                    " load plugin help files
+let g:pathogen_disabled = [ 'pathogen' ]    " don't load self
+call pathogen#infect()                      " load everyhting else
+call pathogen#helptags()                    " load plugin help files
 
 " code folding
-set foldmethod=indent
-set foldlevel=2
-set foldnestmax=4
+"set foldmethod=indent
+"set foldlevel=2
+"set foldnestmax=4
 
 " indentation
 set autoindent
 set softtabstop=4 shiftwidth=4 expandtab
+"
+" Smart indenting
+set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " visual
 highlight Normal ctermbg=black
@@ -22,10 +25,24 @@ set background=dark
 set cursorline
 set t_Co=256
 
+" Wrapping and tabs.
+set tw=78 ts=4 sw=4 sta et sts=4 ai
+"
+
 " syntax highlighting
 syntax on
 filetype on                 " enables filetype detection
 filetype plugin indent on   " enables filetype specific plugins
+" More syntax highlighting.
+let python_highlight_all = 1
+
+
+" Wrap at 72 chars for comments.
+set formatoptions=cq textwidth=72 foldignore= wildignore+=*.py[co]
+
+" Highlight end of line whitespace.
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
 
 " colorpack
 "colorscheme vibrantink
